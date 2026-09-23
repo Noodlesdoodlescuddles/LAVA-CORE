@@ -29,3 +29,15 @@ VERSION: v5.1
 GOAL: Less visual workload → more rendering headroom → smoother gameplay where the device/game allows it.
 
 LAVA-CORE is a client-side optimization project. Results are not guaranteed and vary by game and device.
+
+
+
+## ⚠️ Credits
+
+LavaCore was created by **Noodlesdoodlescuddles**.
+
+Do not claim LavaCore as your own, remove the original credits, or reupload it without proper credit.
+
+Unauthorized reposts or stolen copies may be reported and requested to be removed.
+
+If you share LavaCore, keep the original creator credit and link to this repository.
