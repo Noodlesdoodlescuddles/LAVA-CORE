@@ -1,63 +1,103 @@
 # 🔥 PROJECT LAVACORE — POTATO ASCENSION v5.2 🥔📈
 
-LAVA-CORE is a client-side Roblox visual/performance optimization script designed to reduce the amount of expensive visual effects your device has to render.
+LAVA-CORE is a client-side Roblox visual/performance optimization script designed to reduce unnecessary visual workload and give lower-end devices more rendering headroom.
 
-## WHAT IT DOES: 📊
+## ⚡ WHAT IT DOES
 
-- 📊 **Live FPS counter** — displays your current FPS on-screen.
-- 🖼️ **Texture distance culling** — hides far-away decals/textures and restores them when you're close.
-- 💥 **VFX culling** — disables particles, trails, beams, smoke, fire, sparkles, highlights, and similar effects.
-- 💡 **Lighting optimization** — disables dynamic lights and global shadows.
-- 🌫️ **Atmosphere/post-processing reduction** — reduces visual effects such as atmosphere, clouds, and post effects.
-- 🌊 **Terrain/water optimization** — reduces water effects and terrain decoration.
-- 🎯 **Named VFX culling** — targets effects such as auras, explosions, magic, rifts, quest effects, and reward effects.
-- 🖥️ **GUI/camera VFX culling** — removes certain cosmetic visual effects from UI and camera containers.
-- 🔄 **Batched processing** — spreads optimization work across frames instead of processing everything at once.
-- 🥔 **Progressive visual processing** — queues visual objects and processes them gradually to reduce sudden processing spikes when large amounts of visual content appear.
-- 👀 **Continuous enforcement** — detects newly-created effects and keeps the optimization active during gameplay.
+- 🔥 **LavaCore intro** — displays a short activation sequence when LAVA-CORE starts.
+- 📊 **Persistent FPS counter** — displays live FPS in the upper-right corner and remains active after the intro disappears.
+- 🧱 **Smooth visual optimization** — reduces expensive surface/visual detail while preserving the general appearance of the game.
+- 💥 **VFX optimization** — targets cosmetic visual effects such as particles, trails, beams, smoke, fire, sparkles, highlights, and similar effects.
+- 🖼️ **Texture/decal optimization** — reduces unnecessary texture and decal rendering.
+- 💡 **Lighting optimization** — reduces expensive lighting features such as dynamic shadows and certain visual lighting effects.
+- 🌫️ **Atmosphere/post-processing reduction** — reduces atmosphere and post-processing effects that can add rendering workload.
+- 🌊 **Terrain/water optimization** — reduces certain water and terrain visual effects.
+- 🎯 **Visual-effect targeting** — designed to reduce cosmetic effects such as auras, explosions, magic effects, rifts, quest effects, and reward effects.
+- 🔄 **Continuous enforcement** — watches for newly-created visual objects and processes them while the game is running.
+- ⚙️ **Batched processing** — spreads optimization work across frames instead of attempting to process everything at once.
+- 🥔 **Progressive visual processing** — queues visual objects and processes them gradually to reduce sudden processing spikes.
+- 🛡️ **Character protection** — avoids modifying player-character visuals where the optimization system is configured to protect them.
+- 🏷️ **Visual exclusion support** — supports protected objects/tags so specific visuals can be excluded from optimization.
 
 ## 🧩 SOFT CHUNK / PROGRESSIVE PROCESSING
 
-LAVA-CORE v5.2 introduces a progressive visual-processing system.
+LAVA-CORE uses a progressive visual-processing system designed to prevent large bursts of client-side work.
 
-Instead of immediately processing a huge number of newly-created visual objects at once, LAVA-CORE places them into a queue and handles them in smaller batches.
+Instead of immediately processing thousands of visual objects when a game loads or creates a large VFX sequence, LAVA-CORE places eligible objects into a queue and processes them in controlled batches.
 
-This can help reduce sudden client-side processing spikes when a game creates large amounts of cosmetic VFX or other visual objects at the same time.
+This can help reduce sudden processing spikes caused by:
 
-LAVA-CORE does **not** control Roblox's internal world streaming system and does not change the game's actual map loading or normal render distance.
+- Large VFX sequences
+- Mass object creation
+- Explosions and combat effects
+- Quest/reward effects
+- Newly-loaded visual content
+- Games that continuously create cosmetic effects
 
-## WHAT IT DOESN'T DO: ⚠️
+### ⚠️ IMPORTANT
 
-LAVA-CORE does NOT magically create extra hardware performance.
+This is **not Roblox world streaming**.
 
-It reduces visual workload so weaker devices may have more rendering headroom.
+LAVA-CORE does not control Roblox's internal streaming system, map loading, or the game's normal render distance.
 
-Actual FPS improvements depend on the game, device, graphics settings, and what is causing the slowdown.
+It also does not intentionally make distant objects look worse just because they are far away.
 
-LAVA-CORE also does not guarantee that every game will become faster.
+## 📈 PERFORMANCE PHILOSOPHY
 
-## ⚠️ COMPATIBILITY
+LAVA-CORE focuses on reducing unnecessary **visual workload**, rather than trying to manipulate gameplay systems.
 
-Because LAVA-CORE changes client-side visual properties, some games may look different or may not benefit much from it.
+The goal is:
 
-Some games may also recreate effects, so LAVA-CORE continuously checks for them.
+> Less visual workload → more rendering headroom → potentially smoother gameplay.
 
-The progressive processing system is designed to spread visual processing across time, but it cannot control Roblox's own internal rendering or streaming behavior.
+Performance improvements depend on what is actually limiting the device.
+
+If a game is CPU-bound, network-limited, or limited by the device's hardware, visual optimization may have little effect.
+
+## ⚠️ WHAT IT DOESN'T DO
+
+LAVA-CORE does **not**:
+
+- ❌ Create extra hardware performance
+- ❌ Increase the physical capabilities of the device
+- ❌ Guarantee a specific FPS
+- ❌ Control Roblox's internal graphics-quality system
+- ❌ Control Roblox's internal world-streaming system
+- ❌ Increase network speed or reduce server/network latency
+- ❌ Modify gameplay logic
+- ❌ Modify player hitboxes
+- ❌ Modify physics
+- ❌ Modify remote events
+- ❌ Intentionally interfere with animations or game mechanics
+
+Actual results vary depending on the game, device, graphics settings, and source of the performance bottleneck.
+
+## 🧠 HOW THE PROCESSING SYSTEM WORKS
+
+LAVA-CORE uses a queue-based processing system with controlled batches and a time budget.
+
+Instead of doing:
+
+```text
+Process everything immediately
+        ↓
+Huge CPU spike
+        ↓
+Temporary stutter
 
 ## 🚀 USAGE
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Noodlesdoodlescuddles/LAVA-CORE/main/loader.lua"))()
 
-
 📦 PROJECT INFO
 PROJECT: LAVA-CORE
 VERSION: v5.2
 CREATOR: Noodlesdoodlescuddles
-GOAL
-Less visual workload → more rendering headroom → smoother gameplay where the device/game allows it.
-LAVA-CORE is a client-side optimization project. Results are not guaranteed and vary by game and device.
-⚠️ Credits
+🎯 GOAL
+Less visual workload → more rendering headroom → smoother gameplay where the device and game allow it.
+LAVA-CORE is a client-side optimization project. Performance results are not guaranteed and vary depending on the game and device.
+⚠️ CREDITS
 LavaCore was created by Noodlesdoodlescuddles.
 Do not claim LavaCore as your own, remove the original credits, or reupload it without proper credit.
 Unauthorized reposts or stolen copies may be reported and requested to be removed.
